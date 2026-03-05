@@ -80,22 +80,14 @@ def solve(board, row, col):
         next_col = (col+1) % 9
         return solve(board, next_row, next_col)
     else:
-        num = 0
-        flag = False
-        while not flag:
-            num+=1
-            if num == 10:
-                board[row][col] = 0
-                break
+        for num in range(1,10):
             board[row][col] = num
             if cell_check(board, row, col):
-                flag = solve(board, row+(col//8), (col+1)%9)
-                if flag:
+                if solve(board, row+(col//8), (col+1)%9):
                     return True
+        board[row][col] = 0
         return False
             
-
-
 
 board = []
 print("Enter values row by row: ")
