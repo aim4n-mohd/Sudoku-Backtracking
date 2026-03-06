@@ -1,3 +1,4 @@
+import time
 
 def cell_check(board, row, col):
     #initialize arrays for keeping track of nums
@@ -97,9 +98,15 @@ for i in range(9):
 
 solved = solve(board, 0, 0)
 
+start = time.time()
+
 if solved:
     print("\n\nSolution:\n")
     for i in board:
         print(i)
 else:
     print("\n\nSOLUTION NOT POSSIBLE!!!")
+
+end = time.time()
+print(f"Time Taken - {end-start}")
+
