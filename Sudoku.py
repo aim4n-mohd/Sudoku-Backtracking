@@ -93,7 +93,12 @@ def solve(board, row, col):
 board = []
 print("Enter values row by row: ")
 for i in range(9):
-    row = list(map(int, input().split()))
+    #   row = list(map(int, input().split()))
+    row = []
+    row_inp = input()
+    for j in row_inp:
+        if j in ("1234567890"):
+            row.append(int(j))
     board.append(row)
 
 solved = solve(board, 0, 0)
