@@ -91,27 +91,29 @@ def solve(board, row, col):
             
 
 board = []
-print("Enter values row by row: ")
-for i in range(9):
-    #   row = list(map(int, input().split()))
-    row = []
-    row_inp = input()
-    for j in row_inp:
-        if j in ("1234567890"):
-            row.append(int(j))
-    board.append(row)
 
-solved = solve(board, 0, 0)
+if __name__ == "__main__":
+    print("Enter values row by row: ")
+    for i in range(9):
+        #   row = list(map(int, input().split()))
+        row = []
+        row_inp = input()
+        for j in row_inp:
+            if j in ("1234567890"):
+                row.append(int(j))
+        board.append(row)
 
-start = time.time()
+    solved = solve(board, 0, 0)
 
-if solved:
-    print("\n\nSolution:\n")
-    for i in board:
-        print(i)
-else:
-    print("\n\nSOLUTION NOT POSSIBLE!!!")
+    start = time.time()
 
-end = time.time()
-print(f"Time Taken - {end-start}")
+    if solved:
+        print("\n\nSolution:\n")
+        for i in board:
+            print(i)
+    else:
+        print("\n\nSOLUTION NOT POSSIBLE!!!")
+
+    end = time.time()
+    print(f"Time Taken - {end-start}")
 
