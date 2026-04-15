@@ -62,6 +62,7 @@ def highlight_selected():
         pygame.draw.rect(screen, BLUE, (c*CELL_SIZE, r*CELL_SIZE, CELL_SIZE, CELL_SIZE), 3)
 
 def draw_buttons():
+    """
     pygame.draw.rect(screen, GRAY, (0, 550, WIDTH, 50))
 
     solve_text = SMALL_FONT.render("SOLVE", True, BLACK)
@@ -71,6 +72,36 @@ def draw_buttons():
     screen.blit(generate_text, (20, 560))
     screen.blit(solve_text, (200, 560))
     screen.blit(reset_text, (350, 560))
+    """
+
+    y = 550
+    w = WIDTH//4
+    h = 80
+
+    for i in range(4):
+        x = i * w
+        pygame.draw.rect(screen, GRAY, (x, y, w, h))
+        pygame.draw.rect(screen, BLACK, (x, y, w, h), 2)
+
+    #Generate button
+    text = SMALL_FONT.render("GENERATE", True, BLACK)
+    screen.blit(text, (w//2 - text.get_width()//2, y+25))
+
+    #Solve Instant
+    t1 = SMALL_FONT.render("SOLVE", True, BLACK)
+    t2 = SMALL_FONT.render("INSTANT", True, BLACK)
+    screen.blit(t1, (w + w//2 - t1.get_width()//2, y+10))
+    screen.blit(t2, (w + w//2 - t1.get_width()//2, y+40))
+
+    #Solve Graphic
+    t1 = SMALL_FONT.render("SOLVE", True, BLACK)
+    t2 = SMALL_FONT.render("GRAHPIC", True, BLACK)
+    screen.blit(t1, (2*w + w//2 - t1.get_width()//2, y+10))
+    screen.blit(t2, (2*w + w//2 - t2.get_width()//2, y+40))
+
+    #Reset
+    text = SMALL_FONT.render("RESET", True, BLACK)
+    screen.blit(text, (3*w + w//2 - text.get_width()//2, y+25))
 
 #---INPUT---
 def get_cell(pos):
