@@ -103,9 +103,9 @@ if __name__ == "__main__":
                 row.append(int(j))
         board.append(row)
 
-    solved = solve(board, 0, 0)
-
     start = time.time()
+
+    solved = solve(board, 0, 0)
 
     if solved:
         print("\n\nSolution:\n")
