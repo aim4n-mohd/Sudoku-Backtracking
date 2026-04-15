@@ -138,17 +138,25 @@ while running:
             if cell:
                 selected = cell
 
-            #SOLVE BUTTON
-            if 200 < pos[0] < 300 and 550 < pos[1] < 600:
-                if mode!="solved":
-                    
-                    solve(board, 0, 0)
-                    mode = "solved"
+            #buttons
+            if 550 < pos[1] < 630:
+                w = WIDTH//4
+                index = pos[0]//w
+                
+                if index==0: #generate
+                    pass
 
-            #RESET
-            if 350 < pos[0] < 450 and 550 < pos [1] < 600:
-                board = [[0]*9 for _ in range(9)]
-                mode = "edit"
+                elif index==1: #solve instant
+                    if mode!="solved":
+                        solve(board,0,0)
+                        mode = "solved"
+
+                elif index == 2: #solve graphic
+                    pass
+
+                elif index==3: #reset
+                    board = [[0]*9 for _ in range(9)]
+                    mode = "edit"
 
         #KEYBOARD
         if event.type == pygame.KEYDOWN and selected:
