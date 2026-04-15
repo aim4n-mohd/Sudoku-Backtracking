@@ -148,8 +148,11 @@ while running:
 
                 elif index==1: #solve instant
                     if mode!="solved":
-                        solve(board,0,0)
-                        mode = "solved"
+                        if solve(board,0,0):
+                            mode = "solved"
+                        else:
+                            print("impossible")
+                            continue
 
                 elif index == 2: #solve graphic
                     pass
