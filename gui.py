@@ -39,6 +39,7 @@ for _ in range(9):
 original_board = None
 selected = None
 
+global mode
 mode = "edit"  #edit, play, solved
 
 
@@ -115,6 +116,43 @@ def generate(board):
     # to be added
     pass
 
+def draw_board_helper():
+    screen.fill(WHITE)
+    draw_numbers()
+    draw_grid()
+    pygame.display.update()
+    
+
+#---GRAPHIC SOLVER---
+def solve_graphic(board, row, col):
+    if row==9:
+        mode = "solved"
+        return True
+    
+    next_row = row + (col//8)
+    next_col = (col + 1) % 9
+
+    if board[row][col]: #skip cell if num exists
+        return solve_graphic(board, next_row, next_col)
+    
+    for num in range(1,10):
+        board[row][col] = num
+        draw_board_helper()
+        pygame.display.update()
+        pygame.time.delay(10)
+
+        if cell_check(board, row, col):
+            if solve_graphic(board, next_row, next_col):
+                return True
+            
+        board[row][col] = 0
+        draw_board_helper()
+        pygame.display.update()
+        pygame.time.delay(10)
+    
+    return False
+
+
 #---MAIN LOOP---
 running = True
 
@@ -155,7 +193,12 @@ while running:
                             continue
 
                 elif index == 2: #solve graphic
-                    pass
+                    if mode!="solved":
+                        if solve_graphic(board,0,0):
+                            mode = "solved"
+                        else:
+                            print("impossible")
+                            continue
 
                 elif index==3: #reset
                     board = [[0]*9 for _ in range(9)]
